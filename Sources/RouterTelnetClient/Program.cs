@@ -13,7 +13,6 @@ namespace RouterTelnetClient
         static void Main()
         {
             InitializeApplication();
-            Bootstrapper.InitializeMapping();
             TryRunApplication();
         }
 

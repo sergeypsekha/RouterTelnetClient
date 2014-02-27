@@ -81,30 +81,172 @@ namespace RouterTelnetClient.Business
 
         private void SendVoiceProfileModelHeader(VoiceProfileViewModel model)
         {
-            throw new NotImplementedException();
+            this.terminal.SendResponse("enable", endLine: true);
+
+            this.terminal.SendResponse("/system/tr069", endLine: true);
+            this.terminal.WaitForChangedScreen();
+
+            this.terminal.SendResponse("add InternetGatewayDevice.Services.VoiceService", endLine: true);
+            this.terminal.WaitForChangedScreen();
+
+            this.terminal.SendResponse("add InternetGatewayDevice.Services.VoiceService.1.VoiceProfile", endLine: true);
+            this.terminal.WaitForChangedScreen();
         }
 
         private void SendVoiceProfileModelFooter(VoiceProfileViewModel model)
         {
-            throw new NotImplementedException();
+            this.terminal.SendResponse(
+                "set InternetGatewayDevice.Services.VoiceService.1.VoiceProfile.1.Enable Enabled",
+                endLine: true);
+            this.terminal.WaitForChangedScreen();
         }
 
         private void SendVoiceProfileModelBody(VoiceProfileViewModel model)
         {
-            throw new NotImplementedException();
+            this.WriteDigitMapEnabled(model);
+            this.WriteUserAgentDomain(model);
+            this.WriteProxyServer(model);
+            this.WriteRegistrarServer(model);
+            this.WriteOutboundProxy(model);
+            this.WriteRegistrationPeriod(model);
+        }
+        
+        private void WriteDigitMapEnabled(VoiceProfileViewModel model)
+        {
+            if (!model.DigitMapEnable)
+            {
+                return;
+            }
+
+            this.terminal.SendResponse(
+                "set InternetGatewayDevice.Services.VoiceService.1.VoiceProfile.1.DigitMapEnable Enabled",
+                endLine: true);
+            this.terminal.WaitForChangedScreen();
+
+            var message = string.Join(
+                " ",
+                "set InternetGatewayDevice.Services.VoiceService.1.VoiceProfile.1.DigitMap",
+                model.DigitMap);
+            this.WriteMessage(message);
+        }
+
+        private void WriteUserAgentDomain(VoiceProfileViewModel model)
+        {
+            var message = string.Join(
+                " ",
+                "set InternetGatewayDevice.Services.VoiceService.1.VoiceProfile.1.SIP.UserAgentDomain",
+                model.UserAgentDomain);
+
+            this.WriteMessage(message);
+        }
+
+        private void WriteProxyServer(VoiceProfileViewModel model)
+        {
+            var message = string.Join(
+                " ",
+                "set InternetGatewayDevice.Services.VoiceService.1.VoiceProfile.1.SIP.ProxyServer",
+                model.ProxyServer);
+            this.WriteMessage(message);
+        }
+
+        private void WriteRegistrarServer(VoiceProfileViewModel model)
+        {
+            var message = string.Join(
+                " ",
+                "set InternetGatewayDevice.Services.VoiceService.1.VoiceProfile.1.SIP.RegistrarServer",
+                model.RegistrarServer);
+            this.WriteMessage(message);
+        }
+
+        private void WriteOutboundProxy(VoiceProfileViewModel model)
+        {
+            var message = string.Join(
+                " ",
+                "set InternetGatewayDevice.Services.VoiceService.1.VoiceProfile.1.SIP.OutboundProxy",
+                model.OutboundProxy);
+            this.WriteMessage(message);
+        }
+
+        private void WriteRegistrationPeriod(VoiceProfileViewModel model)
+        {
+            var message = string.Join(
+                " ",
+                "set InternetGatewayDevice.Services.VoiceService.1.VoiceProfile.1.SIP.RegistrationPeriod",
+                model.RegistrationPeriod);
+            this.WriteMessage(message);
         }
 
         private void SendVoiceProfileModelLines(VoiceProfileViewModel model)
         {
-            foreach (var line in model.Lines)
+            for (int i = 0; i < model.Lines.Count; i++)
             {
-                this.SendVoiceProfileModelLine(line);
+                var index = i + 1;
+                var line = model.Lines[i];
+                this.SendVoiceProfileModelLine(line, index);
             }
         }
 
-        private void SendVoiceProfileModelLine(LineViewModel model)
+        private void SendVoiceProfileModelLine(LineViewModel model, int index)
         {
-            throw new NotImplementedException();
+            this.WriteAddLine(model);
+
+            this.WriteRegUserName(model, index);
+            this.WriteAuthUserName(model, index);
+            this.WriteAuthPassword(model, index);
+
+            this.WriteEnableLine(model);
+        }
+
+        private void WriteAddLine(LineViewModel model)
+        {
+            var message = "add InternetGatewayDevice.Services.VoiceService.1.VoiceProfile.1.Line";
+            this.WriteMessage(message);
+        }
+
+        private void WriteRegUserName(LineViewModel model, int index)
+        {
+            var message =
+                string.Format(
+                    "set InternetGatewayDevice.Services.VoiceService.1.VoiceProfile.1.Line.{0}.SIP.RegUserName {1}",
+                    index,
+                    model.RegUserName);
+
+            this.WriteMessage(message);
+        }
+
+        private void WriteAuthUserName(LineViewModel model, int index)
+        {
+            var message =
+                string.Format(
+                    "set InternetGatewayDevice.Services.VoiceService.1.VoiceProfile.1.Line.{0}.SIP.AuthUserName {1}",
+                    index,
+                    model.AuthUserName);
+            this.WriteMessage(message);
+        }
+
+        private void WriteAuthPassword(LineViewModel model, int index)
+        {
+            var message =
+                string.Format(
+                    "set InternetGatewayDevice.Services.VoiceService.1.VoiceProfile.1.Line.{0}.SIP.AuthPassword {1}",
+                    index,
+                    model.AuthPassword);
+            this.WriteMessage(message);
+        }
+
+        private void WriteEnableLine(LineViewModel model)
+        {
+            var message = string.Join(
+                " ",
+                "set InternetGatewayDevice.Services.VoiceService.1.VoiceProfile.1.Line.1.Enable",
+                "Enabled");
+            this.WriteMessage(message);
+        }
+
+        private void WriteMessage(string message)
+        {
+            this.terminal.SendResponse(message, endLine: true);
+            this.terminal.WaitForChangedScreen();
         }
     }
 }
