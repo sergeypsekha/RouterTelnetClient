@@ -1,7 +1,4 @@
-﻿using System;
-using System.Runtime.InteropServices;
-
-using RouterTelnetClient.TelnetClient;
+﻿using RouterTelnetClient.TelnetClient;
 
 namespace RouterTelnetClient.Business
 {
@@ -24,17 +21,17 @@ namespace RouterTelnetClient.Business
 
         public bool Connect()
         {
-            throw new NotImplementedException();
+            return this.terminal.Connect();
         }
 
         public bool SendResponse(string response, bool endLine)
         {
-            throw new NotImplementedException();
+            return this.terminal.SendResponse(response, endLine: true);
         }
 
         public string WaitForString(string searchFor)
         {
-            throw new NotImplementedException();
+            return this.terminal.WaitForString(searchFor);
         }
     }
 }
