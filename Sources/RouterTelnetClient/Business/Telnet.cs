@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Reflection;
+
+using NLog;
 
 using RouterTelnetClient.Models;
 using RouterTelnetClient.Services;
@@ -8,6 +11,8 @@ namespace RouterTelnetClient.Business
 {
     public class Telnet : ITelnet
     {
+        private readonly Logger logger = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType.ToString());
+
         private readonly IAppSettings appSettings;
 
         private Terminal terminal;
@@ -32,6 +37,7 @@ namespace RouterTelnetClient.Business
                     this.appSettings.VirtualScreenWidth))
             {
                 this.Connect();
+
                 this.Login();
 
                 this.SendVoiceProfileModel(model);
@@ -44,21 +50,27 @@ namespace RouterTelnetClient.Business
             var output = this.terminal.WaitForString("Login");
             if (string.IsNullOrWhiteSpace(output))
             {
-                throw new TerminalException("No login possible");
+                var message = "No login possible";
+                this.logger.Error(message);
+                throw new TerminalException(message);
             }
 
             this.terminal.SendResponse(this.appSettings.UserName, true);
             output = this.terminal.WaitForString("Password");
             if (string.IsNullOrWhiteSpace(output))
             {
-                throw new TerminalException("No password prompt found");
+                var message = "No password prompt found";
+                this.logger.Error(message);
+                throw new TerminalException(message);
             }
 
             this.terminal.SendResponse(this.appSettings.Password, true); 
             output = this.terminal.WaitForString(">");
             if (string.IsNullOrWhiteSpace(output))
             {
-                throw new TerminalException("No > prompt found");
+                var message = "No > prompt found";
+                this.logger.Error(message);
+                throw new TerminalException(message);
             }
         }
 
@@ -66,6 +78,7 @@ namespace RouterTelnetClient.Business
         {
             if (this.terminal.Connect())
             {
+                // this.WriteLog();
                 return true;
             }
 
@@ -74,6 +87,7 @@ namespace RouterTelnetClient.Business
                 this.appSettings.Host,
                 this.appSettings.Port);
 
+            this.logger.Error(message);
             throw new InvalidOperationException(message);
         }
 
@@ -90,11 +104,13 @@ namespace RouterTelnetClient.Business
             this.WriteMessage("/system/tr069");
             this.WriteMessage("add InternetGatewayDevice.Services.VoiceService");
             this.WriteMessage("add InternetGatewayDevice.Services.VoiceService.1.VoiceProfile");
+            this.WriteLog();
         }
 
         private void SendVoiceProfileModelFooter(VoiceProfileViewModel model)
         {
             this.WriteMessage("set InternetGatewayDevice.Services.VoiceService.1.VoiceProfile.1.Enable Enabled");
+            this.WriteLog();
         }
 
         private void SendVoiceProfileModelBody(VoiceProfileViewModel model)
@@ -105,8 +121,9 @@ namespace RouterTelnetClient.Business
             this.WriteRegistrarServer(model);
             this.WriteOutboundProxy(model);
             this.WriteRegistrationPeriod(model);
+            this.WriteLog();
         }
-        
+
         private void WriteDigitMapEnabled(VoiceProfileViewModel model)
         {
             if (!model.DigitMapEnable)
@@ -180,6 +197,7 @@ namespace RouterTelnetClient.Business
                 var index = i + 1;
                 var line = model.Lines[i];
                 this.SendVoiceProfileModelLine(line, index);
+                this.WriteLog();
             }
         }
 
@@ -247,6 +265,13 @@ namespace RouterTelnetClient.Business
             {
                 throw new InvalidOperationException("Can't send message: " + message);
             }
+        }
+
+        private void WriteLog()
+        {
+            var message = this.terminal.VirtualScreen.Hardcopy().TrimEnd();
+            this.logger.Info(message);
+            this.terminal.VirtualScreen.CleanScreen();
         }
     }
 }
