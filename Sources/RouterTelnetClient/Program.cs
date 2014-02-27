@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using RouterTelnetClient.Forms;
+using System;
 using System.Windows.Forms;
-
-using Microsoft.VisualBasic;
-
-using RouterTelnetClient.Forms;
 
 namespace RouterTelnetClient
 {
@@ -18,7 +12,8 @@ namespace RouterTelnetClient
         [STAThread]
         static void Main()
         {
-            TryInitializeApplication();
+            InitializeApplication();
+            Bootstrapper.InitializeMapping();
             TryRunApplication();
         }
 
@@ -26,19 +21,6 @@ namespace RouterTelnetClient
         {
             var application = new ApplicationWrapper();
             application.Run(new string[] { });
-        }
-
-        private static void TryInitializeApplication()
-        {
-            try
-            {
-                InitializeApplication();
-            }
-            catch (Exception ex)
-            {
-                // TODO: add logging here
-                return;
-            }
         }
 
         private static void InitializeApplication()

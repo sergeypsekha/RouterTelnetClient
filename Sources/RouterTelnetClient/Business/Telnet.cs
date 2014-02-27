@@ -1,19 +1,18 @@
 ﻿using System;
 
-using Microsoft.VisualBasic.CompilerServices;
-
 using RouterTelnetClient.Models;
+using RouterTelnetClient.Services;
 using RouterTelnetClient.TelnetClient;
 
 namespace RouterTelnetClient.Business
 {
-    public class TerminalClient : ITerminalClient
+    public class Telnet : ITelnet
     {
         private readonly IAppSettings appSettings;
 
         private readonly Terminal terminal;
 
-        public TerminalClient(IAppSettings appSettings)
+        public Telnet(IAppSettings appSettings)
         {
             this.appSettings = appSettings;
             this.terminal = new Terminal(

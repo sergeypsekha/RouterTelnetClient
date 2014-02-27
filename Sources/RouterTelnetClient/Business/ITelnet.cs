@@ -2,10 +2,7 @@ using RouterTelnetClient.Models;
 
 namespace RouterTelnetClient.Business
 {
-    /// <summary>
-    /// The Terminal interface.
-    /// </summary>
-    public interface ITerminalClient
+    public interface ITelnet
     {
         /// <summary>
         /// Connect to the telnet server

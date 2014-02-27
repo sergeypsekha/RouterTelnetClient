@@ -1,6 +1,8 @@
 ﻿using System.Configuration;
 
-namespace RouterTelnetClient.Business
+using RouterTelnetClient.Business;
+
+namespace RouterTelnetClient.Services
 {
     internal class AppSettings : IAppSettings
     {

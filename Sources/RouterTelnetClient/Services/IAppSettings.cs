@@ -1,4 +1,4 @@
-﻿namespace RouterTelnetClient.Business
+﻿namespace RouterTelnetClient.Services
 {
     public interface IAppSettings
     {

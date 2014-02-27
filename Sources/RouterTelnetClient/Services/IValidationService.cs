@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
 
+using RouterTelnetClient.Business;
 using RouterTelnetClient.Models;
 
-namespace RouterTelnetClient.Business
+namespace RouterTelnetClient.Services
 {
     public interface IValidationService
     {

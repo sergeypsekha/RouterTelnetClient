@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Net.NetworkInformation;
 
-namespace RouterTelnetClient.Business
+using RouterTelnetClient.Business;
+
+namespace RouterTelnetClient.Services
 {
     public class PingService : IPingService
     {

@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using RouterTelnetClient.Business;
 using RouterTelnetClient.Models;
 
-namespace RouterTelnetClient.Business
+namespace RouterTelnetClient.Services
 {
     public class TelnetService : ITelnetService
     {
@@ -14,7 +9,7 @@ namespace RouterTelnetClient.Business
 
         private IAppSettings appSettings = null;
 
-        private ITerminalClient terminalClient = null;
+        private ITelnet telnet = null;
 
         public TelnetService()
         {
@@ -24,18 +19,18 @@ namespace RouterTelnetClient.Business
         public void Connect()
         {
             this.pingService.Send();
-            this.terminalClient.Connect();
-            this.terminalClient.Login();
+            this.telnet.Connect();
+            this.telnet.Login();
         }
 
         public void Submit(VoiceProfileViewModel viewModel){
             
-            this.terminalClient.Send(viewModel);
+            this.telnet.Send(viewModel);
         }
 
         public void Disconnect()
         {
-            this.terminalClient.Disconnect();
+            this.telnet.Disconnect();
         }
 
         private void Initialize()
@@ -57,7 +52,7 @@ namespace RouterTelnetClient.Business
 
         private void InitializeTerminalClient()
         {
-            this.terminalClient = new TerminalClient(this.appSettings);
+            this.telnet = new Telnet(this.appSettings);
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using RouterTelnetClient.Models;
 
-namespace RouterTelnetClient.Business
+namespace RouterTelnetClient.Services
 {
     public interface ITelnetService
     {
