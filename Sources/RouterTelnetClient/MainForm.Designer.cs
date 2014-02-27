@@ -32,6 +32,14 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.button1 = new System.Windows.Forms.Button();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.gbLine2 = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txtLine2RegUserName = new System.Windows.Forms.TextBox();
+            this.txtLine2AuthUserName = new System.Windows.Forms.TextBox();
+            this.txtLine2AuthPassword = new System.Windows.Forms.TextBox();
             this.gbVoiceProfile = new System.Windows.Forms.GroupBox();
             this.tableVoiceProfile = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
@@ -41,7 +49,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.gbLine1 = new System.Windows.Forms.GroupBox();
             this.cbDigitMapEnable = new System.Windows.Forms.CheckBox();
             this.txtDigitMap = new System.Windows.Forms.TextBox();
             this.txtUserAgentDomain = new System.Windows.Forms.TextBox();
@@ -49,6 +56,7 @@
             this.txtRegistrarServer = new System.Windows.Forms.TextBox();
             this.txtOutboundProxy = new System.Windows.Forms.TextBox();
             this.txtRegistrationPeriod = new System.Windows.Forms.TextBox();
+            this.gbLine1 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -56,23 +64,15 @@
             this.txtLine1RegUserName = new System.Windows.Forms.TextBox();
             this.txtLine1AuthUserName = new System.Windows.Forms.TextBox();
             this.txtLine1AuthPassword = new System.Windows.Forms.TextBox();
-            this.gbLine2 = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.txtLine2RegUserName = new System.Windows.Forms.TextBox();
-            this.txtLine2AuthUserName = new System.Windows.Forms.TextBox();
-            this.txtLine2AuthPassword = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
+            this.gbLine2.SuspendLayout();
+            this.tableLayoutPanel5.SuspendLayout();
             this.gbVoiceProfile.SuspendLayout();
             this.tableVoiceProfile.SuspendLayout();
             this.gbLine1.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
-            this.gbLine2.SuspendLayout();
-            this.tableLayoutPanel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -131,6 +131,99 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 28.57143F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(778, 521);
             this.tableLayoutPanel3.TabIndex = 1;
+            // 
+            // gbLine2
+            // 
+            this.gbLine2.Controls.Add(this.tableLayoutPanel5);
+            this.gbLine2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gbLine2.Location = new System.Drawing.Point(3, 374);
+            this.gbLine2.Name = "gbLine2";
+            this.gbLine2.Size = new System.Drawing.Size(772, 144);
+            this.gbLine2.TabIndex = 2;
+            this.gbLine2.TabStop = false;
+            this.gbLine2.Text = "Line 2";
+            // 
+            // tableLayoutPanel5
+            // 
+            this.tableLayoutPanel5.ColumnCount = 2;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel5.Controls.Add(this.label11, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.label12, 0, 1);
+            this.tableLayoutPanel5.Controls.Add(this.label13, 0, 2);
+            this.tableLayoutPanel5.Controls.Add(this.txtLine2RegUserName, 1, 0);
+            this.tableLayoutPanel5.Controls.Add(this.txtLine2AuthUserName, 1, 1);
+            this.tableLayoutPanel5.Controls.Add(this.txtLine2AuthPassword, 1, 2);
+            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 16);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            this.tableLayoutPanel5.RowCount = 4;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(766, 125);
+            this.tableLayoutPanel5.TabIndex = 0;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(3, 3);
+            this.label11.Margin = new System.Windows.Forms.Padding(3);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(431, 13);
+            this.label11.TabIndex = 0;
+            this.label11.Text = "InternetGatewayDevice.Services.VoiceService.1.VoiceProfile.1.Line.2.SIP.RegUserNa" +
+    "me";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(3, 28);
+            this.label12.Margin = new System.Windows.Forms.Padding(3);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(433, 13);
+            this.label12.TabIndex = 1;
+            this.label12.Text = "InternetGatewayDevice.Services.VoiceService.1.VoiceProfile.1.Line.2.SIP.AuthUserN" +
+    "ame";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(3, 53);
+            this.label13.Margin = new System.Windows.Forms.Padding(3);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(429, 13);
+            this.label13.TabIndex = 2;
+            this.label13.Text = "InternetGatewayDevice.Services.VoiceService.1.VoiceProfile.1.Line.2.SIP.AuthPassw" +
+    "ord";
+            // 
+            // txtLine2RegUserName
+            // 
+            this.txtLine2RegUserName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtLine2RegUserName.Location = new System.Drawing.Point(539, 3);
+            this.txtLine2RegUserName.Name = "txtLine2RegUserName";
+            this.txtLine2RegUserName.Size = new System.Drawing.Size(224, 20);
+            this.txtLine2RegUserName.TabIndex = 3;
+            // 
+            // txtLine2AuthUserName
+            // 
+            this.txtLine2AuthUserName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtLine2AuthUserName.Location = new System.Drawing.Point(539, 28);
+            this.txtLine2AuthUserName.Name = "txtLine2AuthUserName";
+            this.txtLine2AuthUserName.Size = new System.Drawing.Size(224, 20);
+            this.txtLine2AuthUserName.TabIndex = 4;
+            // 
+            // txtLine2AuthPassword
+            // 
+            this.txtLine2AuthPassword.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtLine2AuthPassword.Location = new System.Drawing.Point(539, 53);
+            this.txtLine2AuthPassword.Name = "txtLine2AuthPassword";
+            this.txtLine2AuthPassword.Size = new System.Drawing.Size(224, 20);
+            this.txtLine2AuthPassword.TabIndex = 5;
             // 
             // gbVoiceProfile
             // 
@@ -248,17 +341,6 @@
             this.label7.Text = "InternetGatewayDevice.Services.VoiceService.1.VoiceProfile.1.SIP.RegistrationPeri" +
     "od";
             // 
-            // gbLine1
-            // 
-            this.gbLine1.Controls.Add(this.tableLayoutPanel4);
-            this.gbLine1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gbLine1.Location = new System.Drawing.Point(3, 226);
-            this.gbLine1.Name = "gbLine1";
-            this.gbLine1.Size = new System.Drawing.Size(772, 142);
-            this.gbLine1.TabIndex = 1;
-            this.gbLine1.TabStop = false;
-            this.gbLine1.Text = "Line 1";
-            // 
             // cbDigitMapEnable
             // 
             this.cbDigitMapEnable.AutoSize = true;
@@ -326,6 +408,17 @@
             this.txtRegistrationPeriod.Name = "txtRegistrationPeriod";
             this.txtRegistrationPeriod.Size = new System.Drawing.Size(224, 20);
             this.txtRegistrationPeriod.TabIndex = 13;
+            // 
+            // gbLine1
+            // 
+            this.gbLine1.Controls.Add(this.tableLayoutPanel4);
+            this.gbLine1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gbLine1.Location = new System.Drawing.Point(3, 226);
+            this.gbLine1.Name = "gbLine1";
+            this.gbLine1.Size = new System.Drawing.Size(772, 142);
+            this.gbLine1.TabIndex = 1;
+            this.gbLine1.TabStop = false;
+            this.gbLine1.Text = "Line 1";
             // 
             // tableLayoutPanel4
             // 
@@ -409,99 +502,6 @@
             this.txtLine1AuthPassword.Size = new System.Drawing.Size(224, 20);
             this.txtLine1AuthPassword.TabIndex = 5;
             // 
-            // gbLine2
-            // 
-            this.gbLine2.Controls.Add(this.tableLayoutPanel5);
-            this.gbLine2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gbLine2.Location = new System.Drawing.Point(3, 374);
-            this.gbLine2.Name = "gbLine2";
-            this.gbLine2.Size = new System.Drawing.Size(772, 144);
-            this.gbLine2.TabIndex = 2;
-            this.gbLine2.TabStop = false;
-            this.gbLine2.Text = "Line 2";
-            // 
-            // tableLayoutPanel5
-            // 
-            this.tableLayoutPanel5.ColumnCount = 2;
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.tableLayoutPanel5.Controls.Add(this.label11, 0, 0);
-            this.tableLayoutPanel5.Controls.Add(this.label12, 0, 1);
-            this.tableLayoutPanel5.Controls.Add(this.label13, 0, 2);
-            this.tableLayoutPanel5.Controls.Add(this.txtLine2RegUserName, 1, 0);
-            this.tableLayoutPanel5.Controls.Add(this.txtLine2AuthUserName, 1, 1);
-            this.tableLayoutPanel5.Controls.Add(this.txtLine2AuthPassword, 1, 2);
-            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 16);
-            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
-            this.tableLayoutPanel5.RowCount = 4;
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(766, 125);
-            this.tableLayoutPanel5.TabIndex = 0;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(3, 3);
-            this.label11.Margin = new System.Windows.Forms.Padding(3);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(431, 13);
-            this.label11.TabIndex = 0;
-            this.label11.Text = "InternetGatewayDevice.Services.VoiceService.1.VoiceProfile.1.Line.2.SIP.RegUserNa" +
-    "me";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(3, 28);
-            this.label12.Margin = new System.Windows.Forms.Padding(3);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(433, 13);
-            this.label12.TabIndex = 1;
-            this.label12.Text = "InternetGatewayDevice.Services.VoiceService.1.VoiceProfile.1.Line.2.SIP.AuthUserN" +
-    "ame";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(3, 53);
-            this.label13.Margin = new System.Windows.Forms.Padding(3);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(429, 13);
-            this.label13.TabIndex = 2;
-            this.label13.Text = "InternetGatewayDevice.Services.VoiceService.1.VoiceProfile.1.Line.2.SIP.AuthPassw" +
-    "ord";
-            // 
-            // txtLine2RegUserName
-            // 
-            this.txtLine2RegUserName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtLine2RegUserName.Location = new System.Drawing.Point(539, 3);
-            this.txtLine2RegUserName.Name = "txtLine2RegUserName";
-            this.txtLine2RegUserName.Size = new System.Drawing.Size(224, 20);
-            this.txtLine2RegUserName.TabIndex = 3;
-            // 
-            // txtLine2AuthUserName
-            // 
-            this.txtLine2AuthUserName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtLine2AuthUserName.Location = new System.Drawing.Point(539, 28);
-            this.txtLine2AuthUserName.Name = "txtLine2AuthUserName";
-            this.txtLine2AuthUserName.Size = new System.Drawing.Size(224, 20);
-            this.txtLine2AuthUserName.TabIndex = 4;
-            // 
-            // txtLine2AuthPassword
-            // 
-            this.txtLine2AuthPassword.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtLine2AuthPassword.Location = new System.Drawing.Point(539, 53);
-            this.txtLine2AuthPassword.Name = "txtLine2AuthPassword";
-            this.txtLine2AuthPassword.Size = new System.Drawing.Size(224, 20);
-            this.txtLine2AuthPassword.TabIndex = 5;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -516,15 +516,15 @@
             this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
+            this.gbLine2.ResumeLayout(false);
+            this.tableLayoutPanel5.ResumeLayout(false);
+            this.tableLayoutPanel5.PerformLayout();
             this.gbVoiceProfile.ResumeLayout(false);
             this.tableVoiceProfile.ResumeLayout(false);
             this.tableVoiceProfile.PerformLayout();
             this.gbLine1.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
-            this.gbLine2.ResumeLayout(false);
-            this.tableLayoutPanel5.ResumeLayout(false);
-            this.tableLayoutPanel5.PerformLayout();
             this.ResumeLayout(false);
 
         }
