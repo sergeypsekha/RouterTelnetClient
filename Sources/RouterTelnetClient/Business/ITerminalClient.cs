@@ -1,3 +1,5 @@
+using RouterTelnetClient.Models;
+
 namespace RouterTelnetClient.Business
 {
     /// <summary>
@@ -11,19 +13,8 @@ namespace RouterTelnetClient.Business
         /// <returns>true if connection was successful</returns>
         bool Connect();
 
-        /// <summary>
-        /// Send a response to the server
-        /// </summary>
-        /// <param name="response">response String</param>
-        /// <param name="endLine">terminate with appropriate end-of-line chars</param>
-        /// <returns>true if sending was OK</returns>
-        bool SendResponse(string response, bool endLine);
+        void Send(VoiceProfileModel model);
 
-        /// <summary>
-        /// Wait for a particular string
-        /// </summary>
-        /// <param name="searchFor">string to be found</param>
-        /// <returns>string found or null if not found</returns>
-        string WaitForString(string searchFor);
+        void Login();
     }
 }

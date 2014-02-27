@@ -4,13 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using RouterTelnetClient.Models;
+
 namespace RouterTelnetClient.Business
 {
     public class TelnetService : ITelnetService
     {
         private IPingService pingService = null;
+
         private IAppSettings appSettings = null;
+
         private ITerminalClient terminalClient = null;
+
+        private IValidationService validationService = null;
 
         public TelnetService()
         {
@@ -21,6 +27,13 @@ namespace RouterTelnetClient.Business
         {
             this.pingService.Send();
             this.terminalClient.Connect();
+            this.terminalClient.Login();
+        }
+
+        public void Submit(VoiceProfileModel model)
+        {
+            this.validationService.Validate(model);
+            this.terminalClient.Send(model);
         }
 
         private void Initialize()

@@ -42,7 +42,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.gbLine1 = new System.Windows.Forms.GroupBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.cbDigitMapEnable = new System.Windows.Forms.CheckBox();
             this.txtDigitMap = new System.Windows.Forms.TextBox();
             this.txtUserAgentDomain = new System.Windows.Forms.TextBox();
             this.txtProxyServer = new System.Windows.Forms.TextBox();
@@ -113,6 +113,7 @@
             this.button1.TabIndex = 0;
             this.button1.Text = "Submit";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // tableLayoutPanel3
             // 
@@ -154,7 +155,7 @@
             this.tableVoiceProfile.Controls.Add(this.label5, 0, 4);
             this.tableVoiceProfile.Controls.Add(this.label6, 0, 5);
             this.tableVoiceProfile.Controls.Add(this.label7, 0, 6);
-            this.tableVoiceProfile.Controls.Add(this.checkBox1, 1, 0);
+            this.tableVoiceProfile.Controls.Add(this.cbDigitMapEnable, 1, 0);
             this.tableVoiceProfile.Controls.Add(this.txtDigitMap, 1, 1);
             this.tableVoiceProfile.Controls.Add(this.txtUserAgentDomain, 1, 2);
             this.tableVoiceProfile.Controls.Add(this.txtProxyServer, 1, 3);
@@ -258,18 +259,18 @@
             this.gbLine1.TabStop = false;
             this.gbLine1.Text = "Line 1";
             // 
-            // checkBox1
+            // cbDigitMapEnable
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Checked = true;
-            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox1.Location = new System.Drawing.Point(539, 3);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(59, 17);
-            this.checkBox1.TabIndex = 7;
-            this.checkBox1.Text = "Enable";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.cbDigitMapEnable.AutoSize = true;
+            this.cbDigitMapEnable.Checked = true;
+            this.cbDigitMapEnable.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbDigitMapEnable.Location = new System.Drawing.Point(539, 3);
+            this.cbDigitMapEnable.Name = "cbDigitMapEnable";
+            this.cbDigitMapEnable.Size = new System.Drawing.Size(59, 17);
+            this.cbDigitMapEnable.TabIndex = 7;
+            this.cbDigitMapEnable.Text = "Enable";
+            this.cbDigitMapEnable.UseVisualStyleBackColor = true;
+            this.cbDigitMapEnable.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // txtDigitMap
             // 
@@ -544,7 +545,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox cbDigitMapEnable;
         private System.Windows.Forms.TextBox txtDigitMap;
         private System.Windows.Forms.TextBox txtUserAgentDomain;
         private System.Windows.Forms.TextBox txtProxyServer;

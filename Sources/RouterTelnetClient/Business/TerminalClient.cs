@@ -1,5 +1,6 @@
 ﻿using System;
 
+using RouterTelnetClient.Models;
 using RouterTelnetClient.TelnetClient;
 
 namespace RouterTelnetClient.Business
@@ -36,14 +37,14 @@ namespace RouterTelnetClient.Business
             throw new InvalidOperationException(message);
         }
 
-        public bool SendResponse(string response, bool endLine)
+        public void Login()
         {
-            return this.terminal.SendResponse(response, endLine: true);
+            throw new NotImplementedException();
         }
 
-        public string WaitForString(string searchFor)
+        public void Send(VoiceProfileModel model)
         {
-            return this.terminal.WaitForString(searchFor);
+            throw new NotImplementedException();
         }
     }
 }
