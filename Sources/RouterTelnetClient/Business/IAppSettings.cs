@@ -9,5 +9,11 @@
         string UserName { get; set; }
 
         string Password { get; set; }
+
+        int TimeoutSeconds { get; set; }
+
+        int VirtualScreenHeight { get; set; }
+
+        int VirtualScreenWidth { get; set; }
     }
 }

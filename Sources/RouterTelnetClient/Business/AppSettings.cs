@@ -12,6 +12,12 @@ namespace RouterTelnetClient.Business
 
         private const string AppSettingPassword = "Password";
 
+        private const string AppSettingTimeoutSeconds = "TimeoutSeconds";
+
+        private const string AppSettingsVirtualScreenHeight = "VirtualScreenHeight";
+
+        private const string AppSettingsVirtualScreenWidth = "VirtualScreenWidth";
+
         public string Host { get; set; }
 
         public int Port { get; set; }
@@ -20,44 +26,76 @@ namespace RouterTelnetClient.Business
 
         public string Password { get; set; }
 
+        public int TimeoutSeconds { get; set; }
+
+        public int VirtualScreenHeight { get; set; }
+
+        public int VirtualScreenWidth { get; set; }
+
         public AppSettings()
         {
             this.InitializeHost();
             this.InitializePort();
             this.InitializeUserName();
             this.InitializePassword();
+            this.InitializeTimeoutSeconds();
+            this.InitializeVirtualScreenHeight();
+            this.InitializeVirtualScreenWidth();
         }
 
         private void InitializeHost()
         {
-            this.Host = this.GetSettingFromConfiguration(AppSettingHost);
+            this.Host = this.GetStringValueFromConfiguration(AppSettingHost);
         }
 
         private void InitializePort()
         {
-            var value = this.GetSettingFromConfiguration(AppSettingPort);
-            int port;
-            if (!int.TryParse(value, out port))
-            {
-                throw new ConfigurationErrorsException(
-                    string.Format(
-                        "Port should be specified as unsigned integer value. But '{0}' is specified.",
-                        value));
-            }
-            this.Port = port;
+            this.Port = this.GetIntValueFromConfiguration(AppSettingPort);
         }
 
         private void InitializeUserName()
         {
-            this.UserName = this.GetSettingFromConfiguration(AppSettingUserName);
+            this.UserName = this.GetStringValueFromConfiguration(AppSettingUserName);
         }
 
         private void InitializePassword()
         {
-            this.Password = this.GetSettingFromConfiguration(AppSettingPassword);
+            this.Password = this.GetStringValueFromConfiguration(AppSettingPassword);
         }
 
-        private string GetSettingFromConfiguration(string appSettingsKey)
+        private void InitializeTimeoutSeconds()
+        {
+            this.TimeoutSeconds = this.GetIntValueFromConfiguration(AppSettingTimeoutSeconds);
+        }
+
+        private void InitializeVirtualScreenWidth()
+        {
+            this.VirtualScreenHeight = this.GetIntValueFromConfiguration(AppSettingsVirtualScreenHeight);
+        }
+
+        private void InitializeVirtualScreenHeight()
+        {
+            this.VirtualScreenWidth = this.GetIntValueFromConfiguration(AppSettingsVirtualScreenWidth);
+        }
+
+        private int GetIntValueFromConfiguration(string appSettingKey)
+        {
+            var value = this.GetStringValueFromConfiguration(appSettingKey);
+            int timeoutSeconds;
+
+            if (!int.TryParse(value, out timeoutSeconds))
+            {
+                throw new ConfigurationErrorsException(
+                    string.Format(
+                        "{0} should be specified as unsigned integer value. But '{1}' is provided",
+                        appSettingKey,
+                        value));
+            }
+
+            return timeoutSeconds;
+        }
+
+        private string GetStringValueFromConfiguration(string appSettingsKey)
         {
             var value = ConfigurationManager.AppSettings[appSettingsKey];
             if (string.IsNullOrEmpty(value))
@@ -65,6 +103,7 @@ namespace RouterTelnetClient.Business
                 throw new ConfigurationErrorsException(
                     string.Format("{0} should be set in configuration file.", appSettingsKey));
             }
+
             return value;
         }
     }

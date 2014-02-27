@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 
 using RouterTelnetClient.TelnetClient;
 
@@ -8,9 +9,17 @@ namespace RouterTelnetClient.Business
     {
         private readonly IAppSettings appSettings;
 
+        private readonly Terminal terminal;
+
         public TerminalClient(IAppSettings appSettings)
         {
             this.appSettings = appSettings;
+            this.terminal = new Terminal(
+                this.appSettings.Host,
+                this.appSettings.Port,
+                this.appSettings.TimeoutSeconds,
+                this.appSettings.VirtualScreenHeight,
+                this.appSettings.VirtualScreenWidth);
         }
 
         public bool Connect()
