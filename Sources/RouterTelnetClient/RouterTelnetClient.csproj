@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="ApplicationWrapper.cs" />
     <Compile Include="Business\AppSettings.cs" />
+    <Compile Include="Business\AppSettingsKey.cs" />
     <Compile Include="Business\IAppSettings.cs" />
     <Compile Include="Business\IPingService.cs" />
     <Compile Include="Business\ITelnetService.cs" />

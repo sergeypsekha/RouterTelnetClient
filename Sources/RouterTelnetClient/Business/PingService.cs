@@ -14,6 +14,11 @@ namespace RouterTelnetClient.Business
 
         public void Send()
         {
+            if (!this.appSettings.PingEnabled)
+            {
+                return;
+            }
+
             var ping = new Ping();
             var pingReply = ping.Send(this.appSettings.Host, this.appSettings.TimeoutSeconds);
             if (pingReply == null)
@@ -26,7 +31,11 @@ namespace RouterTelnetClient.Business
                 return;
             }
 
-            throw new InvalidOperationException(string.Format("Reply status: '{0}'", pingReply.Status));
+            var message = string.Format(
+                "Ping provider can't establish a connection with host: {0}. Reply status: '{1}'",
+                this.appSettings.Host,
+                pingReply.Status);
+            throw new InvalidOperationException(message);
         }
     }
 }

@@ -370,7 +370,7 @@ namespace RouterTelnetClient.TelnetClient
                     this.tcpClient.GetStream().BeginRead(this.buffer, 0, this.buffer.Length, this.callBackReceive, null);
                     return true;
                 }
-                catch
+                catch(Exception ex)
                 {
                     this.tcpClient = null;
                     return false;

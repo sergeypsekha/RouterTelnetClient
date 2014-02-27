@@ -73,6 +73,7 @@
             this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.richTextBox1.Location = new System.Drawing.Point(3, 3);
             this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.ReadOnly = true;
             this.richTextBox1.Size = new System.Drawing.Size(463, 216);
             this.richTextBox1.TabIndex = 1;
             this.richTextBox1.Text = "";
@@ -109,8 +110,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(475, 276);
             this.Controls.Add(this.groupBox1);
+            this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Name = "ErrorForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "RouterTelnetClient Error";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

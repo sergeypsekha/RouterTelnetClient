@@ -15,5 +15,7 @@
         int VirtualScreenHeight { get; set; }
 
         int VirtualScreenWidth { get; set; }
+
+        bool PingEnabled { get; set; }
     }
 }

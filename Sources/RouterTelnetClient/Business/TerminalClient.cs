@@ -1,4 +1,6 @@
-﻿using RouterTelnetClient.TelnetClient;
+﻿using System;
+
+using RouterTelnetClient.TelnetClient;
 
 namespace RouterTelnetClient.Business
 {
@@ -21,7 +23,17 @@ namespace RouterTelnetClient.Business
 
         public bool Connect()
         {
-            return this.terminal.Connect();
+            if (this.terminal.Connect())
+            {
+                return true;
+            }
+
+            var message = string.Format(
+                "Terminal client Can't establish a connection with host: {0}:{1}",
+                this.appSettings.Host,
+                this.appSettings.Port);
+
+            throw new InvalidOperationException(message);
         }
 
         public bool SendResponse(string response, bool endLine)
