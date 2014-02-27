@@ -1,12 +1,12 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 using RouterTelnetClient.Business;
 
 namespace RouterTelnetClient
 {
     public partial class MainForm : Form
     {
-        private IAppSettings appSettings = null;
-        private ITerminalClient terminalClient = null;
+        private ITelnetService telnetService = null;
 
         public MainForm()
         {
@@ -14,20 +14,15 @@ namespace RouterTelnetClient
             this.Initialize();
         }
 
+        protected override void OnShown(EventArgs e)
+        {
+            base.OnShown(e);
+            this.telnetService.Run();
+        }
+
         private void Initialize()
         {
-            this.InitializeApplicationSettings();
-            this.InitializeTerminal();
-        }
-
-        private void InitializeApplicationSettings()
-        {
-            this.appSettings = new AppSettings();
-        }
-
-        private void InitializeTerminal()
-        {
-            this.terminalClient = new TerminalClient(this.appSettings);
+            this.telnetService = new TelnetService();
         }
     }
 }
