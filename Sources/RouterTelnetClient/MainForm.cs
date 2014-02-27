@@ -14,15 +14,20 @@ namespace RouterTelnetClient
             this.Initialize();
         }
 
-        protected override void OnShown(EventArgs e)
+        protected override void OnLoad(EventArgs e)
         {
-            base.OnShown(e);
+            base.OnLoad(e);
             this.telnetService.Connect();
         }
 
         private void Initialize()
         {
             this.telnetService = new TelnetService();
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            this.txtDigitMap.ReadOnly = !this.checkBox1.Checked;
         }
     }
 }
