@@ -6,6 +6,8 @@ namespace RouterTelnetClient.Business
     {
         void Connect();
 
-        void Submit(VoiceProfileModel model);
+        void Submit(VoiceProfileViewModel viewModel);
+
+        void Disconnect();
     }
 }

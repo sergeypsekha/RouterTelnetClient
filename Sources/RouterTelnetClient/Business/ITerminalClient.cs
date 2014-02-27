@@ -13,7 +13,9 @@ namespace RouterTelnetClient.Business
         /// <returns>true if connection was successful</returns>
         bool Connect();
 
-        void Send(VoiceProfileModel model);
+        void Disconnect();
+
+        void Send(VoiceProfileViewModel model);
 
         void Login();
     }

@@ -10,70 +10,70 @@ namespace RouterTelnetClient.Business
 {
     public class ValidationService : IValidationService
     {
-        public IEnumerable<ValidationResult> Validate(VoiceProfileModel model)
+        public IEnumerable<ValidationResult> Validate(VoiceProfileViewModel viewModel)
         {
             var result = new List<ValidationResult>();
 
-            result.AddRange(this.ValidateDigitMap(model));
-            result.AddRange(this.ValidateUserAgentDomain(model));
-            result.AddRange(this.ValidateProxyServer(model));
-            result.AddRange(this.ValidateRegistrarServer(model));
-            result.AddRange(this.ValidateOutboundProxy(model));
-            result.AddRange(this.ValidateRegistrationPeriod(model));
+            result.AddRange(this.ValidateDigitMap(viewModel));
+            result.AddRange(this.ValidateUserAgentDomain(viewModel));
+            result.AddRange(this.ValidateProxyServer(viewModel));
+            result.AddRange(this.ValidateRegistrarServer(viewModel));
+            result.AddRange(this.ValidateOutboundProxy(viewModel));
+            result.AddRange(this.ValidateRegistrationPeriod(viewModel));
 
             return result;
         }
 
-        private IEnumerable<ValidationResult> ValidateDigitMap(VoiceProfileModel model)
+        private IEnumerable<ValidationResult> ValidateDigitMap(VoiceProfileViewModel viewModel)
         {
-            if (model.DigitMapEnable && string.IsNullOrWhiteSpace(model.DigitMap))
+            if (viewModel.DigitMapEnable && string.IsNullOrWhiteSpace(viewModel.DigitMap))
             {
                 yield return new ValidationResult("DigitMap", "Should be specified");
             }
         }
 
-        private IEnumerable<ValidationResult> ValidateUserAgentDomain(VoiceProfileModel model)
+        private IEnumerable<ValidationResult> ValidateUserAgentDomain(VoiceProfileViewModel viewModel)
         {
-            if (string.IsNullOrEmpty(model.UserAgentDomain))
+            if (string.IsNullOrEmpty(viewModel.UserAgentDomain))
             {
                 yield return new ValidationResult("UserAgentDomain", "Should be specified");
             }
         }
 
-        private IEnumerable<ValidationResult> ValidateProxyServer(VoiceProfileModel model)
+        private IEnumerable<ValidationResult> ValidateProxyServer(VoiceProfileViewModel viewModel)
         {   
 
-            if (string.IsNullOrEmpty(model.ProxyServer))
+            if (string.IsNullOrEmpty(viewModel.ProxyServer))
             {
                 yield return new ValidationResult("ProxyServer", "Should be specified");
             }
         }
 
-        private IEnumerable<ValidationResult> ValidateRegistrarServer(VoiceProfileModel model)
+        private IEnumerable<ValidationResult> ValidateRegistrarServer(VoiceProfileViewModel viewModel)
         {
-            if (string.IsNullOrEmpty(model.RegistrarServer))
+            if (string.IsNullOrEmpty(viewModel.RegistrarServer))
             {
                 yield return new ValidationResult("RegistrarServer", "Should be specified");
             }
         }
 
-        private IEnumerable<ValidationResult> ValidateOutboundProxy(VoiceProfileModel model)
+        private IEnumerable<ValidationResult> ValidateOutboundProxy(VoiceProfileViewModel viewModel)
         {
-            if (string.IsNullOrEmpty(model.OutboundProxy))
+            if (string.IsNullOrEmpty(viewModel.OutboundProxy))
             {
                 yield return new ValidationResult("OutboundProxy", "Should be specified");
             }
         }
 
-        private IEnumerable<ValidationResult> ValidateRegistrationPeriod(VoiceProfileModel model)
+        private IEnumerable<ValidationResult> ValidateRegistrationPeriod(VoiceProfileViewModel viewModel)
         {
-            if (string.IsNullOrEmpty(model.RegistrationPeriod))
+            if (string.IsNullOrEmpty(viewModel.RegistrationPeriod))
             {
                 yield return new ValidationResult("RegistrationPeriod", "Should be specified");
             }
 
             uint value;
-            if (!uint.TryParse(model.RegistrationPeriod, out value))
+            if (!uint.TryParse(viewModel.RegistrationPeriod, out value))
             {
                 yield return new ValidationResult("RegistrationPeriod", "Should be specified as unsigned int");
             }

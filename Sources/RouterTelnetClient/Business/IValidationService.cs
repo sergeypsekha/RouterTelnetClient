@@ -6,6 +6,6 @@ namespace RouterTelnetClient.Business
 {
     public interface IValidationService
     {
-        IEnumerable<ValidationResult> Validate(VoiceProfileModel model);
+        IEnumerable<ValidationResult> Validate(VoiceProfileViewModel viewModel);
     }
 }

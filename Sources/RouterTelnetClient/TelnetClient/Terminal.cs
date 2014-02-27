@@ -1657,37 +1657,9 @@ namespace RouterTelnetClient.TelnetClient
 
     #region Custom exceptions
 
-    /// <summary>
-    /// Exception dealing with connectivity
-    /// </summary>
-    public class TelnetException : ApplicationException
-    {
-        /// <summary>
-        /// Constructor
-        /// </summary>
-        /// <param name="message">Exception's message</param>
-        public TelnetException(string message)
-            : base(message)
-        {
-            // further code
-        }
-    } // Exception class
+    // Exception class
 
-    /// <summary>
-    /// Exception dealing with parsing ...
-    /// </summary>
-    public class TerminalException : ApplicationException
-    {
-        /// <summary>
-        /// Constructor
-        /// </summary>
-        /// <param name="message">Exception's message</param>
-        public TerminalException(string message)
-            : base(message)
-        {
-            // further code
-        }
-    } // Exception class
+    // Exception class
 
     #endregion
 } // namespace

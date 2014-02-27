@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace RouterTelnetClient.Models
 {
-    public class VoiceProfileModel
+    public class VoiceProfileViewModel
     {
-        public VoiceProfileModel()
+        public VoiceProfileViewModel()
         {
-            this.Lines = new List<LineModel>();
+            this.Lines = new List<LineViewModel>();
         }
 
         public bool DigitMapEnable { get; set; }
@@ -27,6 +27,6 @@ namespace RouterTelnetClient.Models
 
         public string RegistrationPeriod { get; set; }
 
-        public List<LineModel> Lines { get; set; }
+        public List<LineViewModel> Lines { get; set; }
     }
 }

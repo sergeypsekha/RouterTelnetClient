@@ -28,9 +28,14 @@ namespace RouterTelnetClient.Business
             this.terminalClient.Login();
         }
 
-        public void Submit(VoiceProfileModel model){
+        public void Submit(VoiceProfileViewModel viewModel){
             
-            this.terminalClient.Send(model);
+            this.terminalClient.Send(viewModel);
+        }
+
+        public void Disconnect()
+        {
+            this.terminalClient.Disconnect();
         }
 
         private void Initialize()

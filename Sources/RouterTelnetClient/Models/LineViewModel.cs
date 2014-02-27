@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RouterTelnetClient.Models
 {
-    public class LineModel
+    public class LineViewModel
     {
         public string RegUserName { get; set; }
 

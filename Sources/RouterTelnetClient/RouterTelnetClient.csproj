@@ -76,13 +76,15 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Models\LineModel.cs" />
-    <Compile Include="Models\VoiceProfileModel.cs" />
+    <Compile Include="Models\LineViewModel.cs" />
+    <Compile Include="Models\VoiceProfileViewModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Business\ITerminalClient.cs" />
     <Compile Include="Business\TerminalClient.cs" />
+    <Compile Include="TelnetClient\TelnetException.cs" />
     <Compile Include="TelnetClient\Terminal.cs" />
+    <Compile Include="TelnetClient\TerminalException.cs" />
     <Compile Include="TelnetClient\VirtualScreen.cs" />
     <EmbeddedResource Include="Forms\ErrorForm.resx">
       <DependentUpon>ErrorForm.cs</DependentUpon>

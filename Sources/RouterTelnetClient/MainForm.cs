@@ -20,6 +20,11 @@ namespace RouterTelnetClient
             this.Initialize();
         }
 
+        protected override void OnFormClosed(FormClosedEventArgs e)
+        {
+            this.telnetService.Disconnect();
+        }
+
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
@@ -51,13 +56,13 @@ namespace RouterTelnetClient
             this.telnetService.Submit(model);
         }
 
-        private VoiceProfileModel GetViewProfileModel()
+        private VoiceProfileViewModel GetViewProfileModel()
         {
             var line1Model = this.GetLine1Model();
 
             var line2Model = this.GetLine2Model();
 
-            var voiceProfileModel = new VoiceProfileModel
+            var voiceProfileModel = new VoiceProfileViewModel
                                         {
                                             DigitMapEnable = this.cbDigitMapEnable.Checked,
                                             DigitMap = this.txtDigitMap.Text,
@@ -67,14 +72,14 @@ namespace RouterTelnetClient
                                             OutboundProxy = this.txtOutboundProxy.Text,
                                             RegistrationPeriod = this.txtRegistrationPeriod.Text,
                                             Lines =
-                                                new List<LineModel>(new[] { line1Model, line2Model })
+                                                new List<LineViewModel>(new[] { line1Model, line2Model })
                                         };
             return voiceProfileModel;
         }
 
-        private LineModel GetLine2Model()
+        private LineViewModel GetLine2Model()
         {
-            var line2Model = new LineModel
+            var line2Model = new LineViewModel
                                  {
                                      RegUserName = this.txtLine2RegUserName.Text,
                                      AuthUserName = this.txtLine2AuthUserName.Text,
@@ -83,9 +88,9 @@ namespace RouterTelnetClient
             return line2Model;
         }
 
-        private LineModel GetLine1Model()
+        private LineViewModel GetLine1Model()
         {
-            var line1Model = new LineModel
+            var line1Model = new LineViewModel
                                  {
                                      RegUserName = this.txtLine1RegUserName.Text,
                                      AuthUserName = this.txtLine1AuthUserName.Text,
