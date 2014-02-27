@@ -50,6 +50,17 @@
   <ItemGroup>
     <Compile Include="ApplicationWrapper.cs" />
     <Compile Include="Bootstrapper.cs" />
+    <Compile Include="Forms\LongOperationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\LongOperationForm.Designer.cs">
+      <DependentUpon>LongOperationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Resource1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource1.resx</DependentUpon>
+    </Compile>
     <Compile Include="Services\AppSettings.cs" />
     <Compile Include="Business\AppSettingsKey.cs" />
     <Compile Include="Services\IAppSettings.cs" />
@@ -92,6 +103,9 @@
     <EmbeddedResource Include="Forms\ErrorForm.resx">
       <DependentUpon>ErrorForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\LongOperationForm.resx">
+      <DependentUpon>LongOperationForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\ValidationForm.resx">
       <DependentUpon>ValidationForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -108,6 +122,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Resource1.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -121,7 +139,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\sending.data.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

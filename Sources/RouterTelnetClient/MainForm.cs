@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Windows.Forms;
 using RouterTelnetClient.Business;
 using RouterTelnetClient.Forms;
@@ -36,6 +37,7 @@ namespace RouterTelnetClient
         {
             var model = this.GetViewProfileModel();
             var validationResult = this.validationService.Validate(model);
+            
             if (validationResult.Any())
             {
                 var form = new ValidationForm(validationResult);
@@ -43,7 +45,21 @@ namespace RouterTelnetClient
                 return;
             }
 
-            this.telnetService.Submit(model);
+            var longOperationForm = new LongOperationForm();
+            longOperationForm.Show(this);
+
+            var x = longOperationForm.Owner.Location.X + (longOperationForm.Owner.Width - longOperationForm.Width) / 2;
+            var y = longOperationForm.Owner.Location.Y + (longOperationForm.Owner.Height - longOperationForm.Height) / 2;
+            longOperationForm.Location = new System.Drawing.Point(x, y);
+            longOperationForm.SetDesktopLocation(x, y);
+            try
+            {
+                this.telnetService.Submit(model);
+            }
+            finally
+            {
+                longOperationForm.Hide();
+            }
         }
 
         private VoiceProfileViewModel GetViewProfileModel()
