@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 using RouterTelnetClient.Business;
+using RouterTelnetClient.Forms;
 using RouterTelnetClient.Models;
 
 namespace RouterTelnetClient
@@ -9,6 +11,8 @@ namespace RouterTelnetClient
     public partial class MainForm : Form
     {
         private ITelnetService telnetService = null;
+
+        private IValidationService validationService = null;
 
         public MainForm()
         {
@@ -24,6 +28,7 @@ namespace RouterTelnetClient
 
         private void Initialize()
         {
+            this.validationService = new ValidationService();
             this.telnetService = new TelnetService();
         }
 
@@ -34,8 +39,14 @@ namespace RouterTelnetClient
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var voiceProfileModel = this.GetViewProfileModel();
-            this.telnetService.Submit(voiceProfileModel);
+            var model = this.GetViewProfileModel();
+            var validationResult = this.validationService.Validate(model);
+            if (validationResult.Any())
+            {
+                return;
+            }
+
+            this.telnetService.Submit(model);
         }
 
         private VoiceProfileModel GetViewProfileModel()

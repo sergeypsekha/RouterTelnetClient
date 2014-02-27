@@ -1,9 +1,11 @@
-﻿using RouterTelnetClient.Models;
+﻿using System.Collections.Generic;
+
+using RouterTelnetClient.Models;
 
 namespace RouterTelnetClient.Business
 {
     public interface IValidationService
     {
-        void Validate(VoiceProfileModel model);
+        IEnumerable<ValidationResult> Validate(VoiceProfileModel model);
     }
 }

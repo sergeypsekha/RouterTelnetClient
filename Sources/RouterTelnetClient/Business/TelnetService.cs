@@ -16,8 +16,6 @@ namespace RouterTelnetClient.Business
 
         private ITerminalClient terminalClient = null;
 
-        private IValidationService validationService = null;
-
         public TelnetService()
         {
             this.Initialize();
@@ -30,9 +28,8 @@ namespace RouterTelnetClient.Business
             this.terminalClient.Login();
         }
 
-        public void Submit(VoiceProfileModel model)
-        {
-            this.validationService.Validate(model);
+        public void Submit(VoiceProfileModel model){
+            
             this.terminalClient.Send(model);
         }
 

@@ -39,7 +39,7 @@ namespace RouterTelnetClient.Business
 
         public void Login()
         {
-            throw new NotImplementedException();
+            return;
         }
 
         public void Send(VoiceProfileModel model)
