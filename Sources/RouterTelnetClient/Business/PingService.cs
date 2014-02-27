@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Deployment.Application;
-using System.Linq;
 using System.Net.NetworkInformation;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RouterTelnetClient.Business
 {
@@ -31,7 +26,7 @@ namespace RouterTelnetClient.Business
                 return;
             }
 
-            throw new NetworkInformationException((int)pingReply.Status);
+            throw new InvalidOperationException(string.Format("Reply status: '{0}'", pingReply.Status));
         }
     }
 }

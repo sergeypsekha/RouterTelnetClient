@@ -4,6 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using Microsoft.VisualBasic;
+
+using RouterTelnetClient.Forms;
+
 namespace RouterTelnetClient
 {
     static class Program
@@ -14,9 +18,55 @@ namespace RouterTelnetClient
         [STAThread]
         static void Main()
         {
+            TryInitializeApplication();
+            TryRunApplication();
+        }
+
+        private static void TryRunApplication()
+        {
+            var application = new ApplicationWrapper();
+            application.Run(new string[] { });
+        }
+
+        private static void TryInitializeApplication()
+        {
+            try
+            {
+                InitializeApplication();
+            }
+            catch (Exception ex)
+            {
+                // TODO: add logging here
+                return;
+            }
+        }
+
+        private static void InitializeApplication()
+        {
+            Application.ThreadException += Application_ThreadException;
+            Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
+            AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+        }
+
+        static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            string message = GetExceptionMessage(e);
+            var form = new ErrorForm(message);
+            form.ShowDialog();
+            Environment.Exit(1);
+        }
+
+        private static string GetExceptionMessage(UnhandledExceptionEventArgs e)
+        {
+            var exception = e.ExceptionObject as Exception;
+            return exception == null ? "Can't exctract an exception's message. Possible general fault." : exception.Message;
+        }
+
+        static void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)
+        {
+            throw new NotImplementedException();
         }
     }
 }

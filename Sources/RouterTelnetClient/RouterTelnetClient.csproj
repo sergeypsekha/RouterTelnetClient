@@ -33,6 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -46,12 +47,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApplicationWrapper.cs" />
     <Compile Include="Business\AppSettings.cs" />
     <Compile Include="Business\IAppSettings.cs" />
     <Compile Include="Business\IPingService.cs" />
     <Compile Include="Business\ITelnetService.cs" />
     <Compile Include="Business\PingService.cs" />
     <Compile Include="Business\TelnetService.cs" />
+    <Compile Include="Forms\ErrorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ErrorForm.Designer.cs">
+      <DependentUpon>ErrorForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -64,6 +72,9 @@
     <Compile Include="Business\TerminalClient.cs" />
     <Compile Include="TelnetClient\Terminal.cs" />
     <Compile Include="TelnetClient\VirtualScreen.cs" />
+    <EmbeddedResource Include="Forms\ErrorForm.resx">
+      <DependentUpon>ErrorForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
