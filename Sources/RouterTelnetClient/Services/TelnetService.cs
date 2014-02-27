@@ -16,21 +16,10 @@ namespace RouterTelnetClient.Services
             this.Initialize();
         }
 
-        public void Connect()
+        public void Submit(VoiceProfileViewModel viewModel)
         {
             this.pingService.Send();
-            this.telnet.Connect();
-            this.telnet.Login();
-        }
-
-        public void Submit(VoiceProfileViewModel viewModel){
-            
             this.telnet.Send(viewModel);
-        }
-
-        public void Disconnect()
-        {
-            this.telnet.Disconnect();
         }
 
         private void Initialize()

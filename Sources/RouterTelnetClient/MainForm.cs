@@ -20,18 +20,7 @@ namespace RouterTelnetClient
             this.InitializeComponent();
             this.Initialize();
         }
-
-        protected override void OnFormClosed(FormClosedEventArgs e)
-        {
-            this.telnetService.Disconnect();
-        }
-
-        protected override void OnLoad(EventArgs e)
-        {
-            base.OnLoad(e);
-            this.telnetService.Connect();
-        }
-
+        
         private void Initialize()
         {
             this.validationService = new ValidationService();

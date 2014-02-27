@@ -10,32 +10,11 @@ namespace RouterTelnetClient.Business
     {
         private readonly IAppSettings appSettings;
 
-        private readonly Terminal terminal;
+        private Terminal terminal;
 
         public Telnet(IAppSettings appSettings)
         {
             this.appSettings = appSettings;
-            this.terminal = new Terminal(
-                this.appSettings.Host,
-                this.appSettings.Port,
-                this.appSettings.TimeoutSeconds,
-                this.appSettings.VirtualScreenHeight,
-                this.appSettings.VirtualScreenWidth);
-        }
-
-        public bool Connect()
-        {
-            if (this.terminal.Connect())
-            {
-                return true;
-            }
-
-            var message = string.Format(
-                "Terminal client Can't establish a connection with host: {0}:{1}",
-                this.appSettings.Host,
-                this.appSettings.Port);
-
-            throw new InvalidOperationException(message);
         }
 
         public void Disconnect()
@@ -43,7 +22,24 @@ namespace RouterTelnetClient.Business
             this.terminal.Dispose();
         }
 
-        public void Login()
+        public void Send(VoiceProfileViewModel model)
+        {
+            using (this.terminal = new Terminal(
+                    this.appSettings.Host,
+                    this.appSettings.Port,
+                    this.appSettings.TimeoutSeconds,
+                    this.appSettings.VirtualScreenHeight,
+                    this.appSettings.VirtualScreenWidth))
+            {
+                this.Connect();
+                this.Login();
+
+                this.SendVoiceProfileModel(model);
+                this.SendVoiceProfileModelLines(model);
+            }
+        }
+
+        private void Login()
         {
             var output = this.terminal.WaitForString("Login");
             if (string.IsNullOrWhiteSpace(output))
@@ -66,10 +62,19 @@ namespace RouterTelnetClient.Business
             }
         }
 
-        public void Send(VoiceProfileViewModel model)
+        private bool Connect()
         {
-            this.SendVoiceProfileModel(model);
-            this.SendVoiceProfileModelLines(model);
+            if (this.terminal.Connect())
+            {
+                return true;
+            }
+
+            var message = string.Format(
+                "Terminal client Can't establish a connection with host: {0}:{1}",
+                this.appSettings.Host,
+                this.appSettings.Port);
+
+            throw new InvalidOperationException(message);
         }
 
         private void SendVoiceProfileModel(VoiceProfileViewModel model)
@@ -81,24 +86,15 @@ namespace RouterTelnetClient.Business
 
         private void SendVoiceProfileModelHeader(VoiceProfileViewModel model)
         {
-            this.terminal.SendResponse("enable", endLine: true);
-
-            this.terminal.SendResponse("/system/tr069", endLine: true);
-            this.terminal.WaitForChangedScreen();
-
-            this.terminal.SendResponse("add InternetGatewayDevice.Services.VoiceService", endLine: true);
-            this.terminal.WaitForChangedScreen();
-
-            this.terminal.SendResponse("add InternetGatewayDevice.Services.VoiceService.1.VoiceProfile", endLine: true);
-            this.terminal.WaitForChangedScreen();
+            this.WriteMessage("enable");
+            this.WriteMessage("/system/tr069");
+            this.WriteMessage("add InternetGatewayDevice.Services.VoiceService");
+            this.WriteMessage("add InternetGatewayDevice.Services.VoiceService.1.VoiceProfile");
         }
 
         private void SendVoiceProfileModelFooter(VoiceProfileViewModel model)
         {
-            this.terminal.SendResponse(
-                "set InternetGatewayDevice.Services.VoiceService.1.VoiceProfile.1.Enable Enabled",
-                endLine: true);
-            this.terminal.WaitForChangedScreen();
+            this.WriteMessage("set InternetGatewayDevice.Services.VoiceService.1.VoiceProfile.1.Enable Enabled");
         }
 
         private void SendVoiceProfileModelBody(VoiceProfileViewModel model)
@@ -118,10 +114,7 @@ namespace RouterTelnetClient.Business
                 return;
             }
 
-            this.terminal.SendResponse(
-                "set InternetGatewayDevice.Services.VoiceService.1.VoiceProfile.1.DigitMapEnable Enabled",
-                endLine: true);
-            this.terminal.WaitForChangedScreen();
+            this.WriteMessage("set InternetGatewayDevice.Services.VoiceService.1.VoiceProfile.1.DigitMapEnable Enabled");
 
             var message = string.Join(
                 " ",
@@ -146,6 +139,7 @@ namespace RouterTelnetClient.Business
                 " ",
                 "set InternetGatewayDevice.Services.VoiceService.1.VoiceProfile.1.SIP.ProxyServer",
                 model.ProxyServer);
+
             this.WriteMessage(message);
         }
 
@@ -155,6 +149,7 @@ namespace RouterTelnetClient.Business
                 " ",
                 "set InternetGatewayDevice.Services.VoiceService.1.VoiceProfile.1.SIP.RegistrarServer",
                 model.RegistrarServer);
+
             this.WriteMessage(message);
         }
 
@@ -164,6 +159,7 @@ namespace RouterTelnetClient.Business
                 " ",
                 "set InternetGatewayDevice.Services.VoiceService.1.VoiceProfile.1.SIP.OutboundProxy",
                 model.OutboundProxy);
+
             this.WriteMessage(message);
         }
 
@@ -173,6 +169,7 @@ namespace RouterTelnetClient.Business
                 " ",
                 "set InternetGatewayDevice.Services.VoiceService.1.VoiceProfile.1.SIP.RegistrationPeriod",
                 model.RegistrationPeriod);
+
             this.WriteMessage(message);
         }
 
@@ -246,7 +243,10 @@ namespace RouterTelnetClient.Business
         private void WriteMessage(string message)
         {
             this.terminal.SendResponse(message, endLine: true);
-            this.terminal.WaitForChangedScreen();
+            if (!this.terminal.WaitForChangedScreen())
+            {
+                throw new InvalidOperationException("Can't send message: " + message);
+            }
         }
     }
 }
