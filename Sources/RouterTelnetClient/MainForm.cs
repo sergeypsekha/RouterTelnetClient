@@ -43,6 +43,8 @@ namespace RouterTelnetClient
             var validationResult = this.validationService.Validate(model);
             if (validationResult.Any())
             {
+                var form = new ValidationForm(validationResult);
+                form.ShowDialog();
                 return;
             }
 
