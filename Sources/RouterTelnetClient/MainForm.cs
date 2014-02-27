@@ -17,7 +17,7 @@ namespace RouterTelnetClient
         protected override void OnShown(EventArgs e)
         {
             base.OnShown(e);
-            this.telnetService.Run();
+            this.telnetService.Connect();
         }
 
         private void Initialize()

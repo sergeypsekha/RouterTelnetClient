@@ -17,9 +17,10 @@ namespace RouterTelnetClient.Business
             this.Initialize();
         }
 
-        public void Run()
+        public void Connect()
         {
             this.pingService.Send();
+            this.terminalClient.Connect();
         }
 
         private void Initialize()
@@ -27,8 +28,6 @@ namespace RouterTelnetClient.Business
             this.InitializeApplicationSettings();
             this.InitializeKeepAliveService();
             this.InitializeTerminalClient();
-
-            
         }
 
         private void InitializeKeepAliveService()

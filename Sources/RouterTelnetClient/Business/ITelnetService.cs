@@ -2,6 +2,6 @@
 {
     public interface ITelnetService
     {
-        void Run();
+        void Connect();
     }
 }
