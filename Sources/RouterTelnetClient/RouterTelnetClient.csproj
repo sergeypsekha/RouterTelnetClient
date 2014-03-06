@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="ApplicationWrapper.cs" />
     <Compile Include="Bootstrapper.cs" />
+    <Compile Include="Configuration\GenericConfigurationElementCollection.cs" />
     <Compile Include="Forms\LongOperationForm.cs">
       <SubType>Form</SubType>
     </Compile>
