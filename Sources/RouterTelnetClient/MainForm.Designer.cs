@@ -171,10 +171,9 @@
             this.label11.Location = new System.Drawing.Point(3, 3);
             this.label11.Margin = new System.Windows.Forms.Padding(3);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(431, 13);
+            this.label11.Size = new System.Drawing.Size(80, 13);
             this.label11.TabIndex = 0;
-            this.label11.Text = "InternetGatewayDevice.Services.VoiceService.1.VoiceProfile.1.Line.2.SIP.RegUserNa" +
-    "me";
+            this.label11.Text = "SIP User Name";
             // 
             // label12
             // 
@@ -182,10 +181,9 @@
             this.label12.Location = new System.Drawing.Point(3, 28);
             this.label12.Margin = new System.Windows.Forms.Padding(3);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(433, 13);
+            this.label12.Size = new System.Drawing.Size(214, 13);
             this.label12.TabIndex = 1;
-            this.label12.Text = "InternetGatewayDevice.Services.VoiceService.1.VoiceProfile.1.Line.2.SIP.AuthUserN" +
-    "ame";
+            this.label12.Text = "Authentication Username (including domain)";
             // 
             // label13
             // 
@@ -193,10 +191,9 @@
             this.label13.Location = new System.Drawing.Point(3, 53);
             this.label13.Margin = new System.Windows.Forms.Padding(3);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(429, 13);
+            this.label13.Size = new System.Drawing.Size(53, 13);
             this.label13.TabIndex = 2;
-            this.label13.Text = "InternetGatewayDevice.Services.VoiceService.1.VoiceProfile.1.Line.2.SIP.AuthPassw" +
-    "ord";
+            this.label13.Text = "Password";
             // 
             // txtLine2RegUserName
             // 
@@ -286,9 +283,9 @@
             this.label2.Location = new System.Drawing.Point(3, 28);
             this.label2.Margin = new System.Windows.Forms.Padding(3);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(351, 13);
+            this.label2.Size = new System.Drawing.Size(107, 13);
             this.label2.TabIndex = 1;
-            this.label2.Text = "InternetGatewayDevice.Services.VoiceService.1.VoiceProfile.1.DigitMap";
+            this.label2.Text = "Voice profile dial plan";
             // 
             // label3
             // 
@@ -296,9 +293,9 @@
             this.label3.Location = new System.Drawing.Point(3, 53);
             this.label3.Margin = new System.Windows.Forms.Padding(3);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(415, 13);
+            this.label3.Size = new System.Drawing.Size(61, 13);
             this.label3.TabIndex = 2;
-            this.label3.Text = "InternetGatewayDevice.Services.VoiceService.1.VoiceProfile.1.SIP.UserAgentDomain";
+            this.label3.Text = "SIP domain";
             // 
             // label4
             // 
@@ -306,9 +303,9 @@
             this.label4.Location = new System.Drawing.Point(3, 78);
             this.label4.Margin = new System.Windows.Forms.Padding(3);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(386, 13);
+            this.label4.Size = new System.Drawing.Size(171, 13);
             this.label4.TabIndex = 3;
-            this.label4.Text = "InternetGatewayDevice.Services.VoiceService.1.VoiceProfile.1.SIP.ProxyServer";
+            this.label4.Text = "Proxy Server (IP address of FQDN)";
             // 
             // label5
             // 
@@ -316,9 +313,9 @@
             this.label5.Location = new System.Drawing.Point(3, 103);
             this.label5.Margin = new System.Windows.Forms.Padding(3);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(402, 13);
+            this.label5.Size = new System.Drawing.Size(168, 13);
             this.label5.TabIndex = 4;
-            this.label5.Text = "InternetGatewayDevice.Services.VoiceService.1.VoiceProfile.1.SIP.RegistrarServer";
+            this.label5.Text = "SIP registrar (IP address of FQDN)";
             // 
             // label6
             // 
@@ -326,9 +323,9 @@
             this.label6.Location = new System.Drawing.Point(3, 128);
             this.label6.Margin = new System.Windows.Forms.Padding(3);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(402, 13);
+            this.label6.Size = new System.Drawing.Size(239, 13);
             this.label6.TabIndex = 5;
-            this.label6.Text = "InternetGatewayDevice.Services.VoiceService.1.VoiceProfile.1.SIP.OutboundProxy";
+            this.label6.Text = "SIP outbound Proxy Server (IP address of FQDN)";
             // 
             // label7
             // 
@@ -336,10 +333,9 @@
             this.label7.Location = new System.Drawing.Point(3, 153);
             this.label7.Margin = new System.Windows.Forms.Padding(3);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(415, 13);
+            this.label7.Size = new System.Drawing.Size(146, 13);
             this.label7.TabIndex = 6;
-            this.label7.Text = "InternetGatewayDevice.Services.VoiceService.1.VoiceProfile.1.SIP.RegistrationPeri" +
-    "od";
+            this.label7.Text = "User Agent registration period";
             // 
             // cbDigitMapEnable
             // 
@@ -448,10 +444,9 @@
             this.label8.Location = new System.Drawing.Point(3, 3);
             this.label8.Margin = new System.Windows.Forms.Padding(3);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(431, 13);
+            this.label8.Size = new System.Drawing.Size(80, 13);
             this.label8.TabIndex = 0;
-            this.label8.Text = "InternetGatewayDevice.Services.VoiceService.1.VoiceProfile.1.Line.1.SIP.RegUserNa" +
-    "me";
+            this.label8.Text = "SIP User Name";
             // 
             // label9
             // 
@@ -459,10 +454,9 @@
             this.label9.Location = new System.Drawing.Point(3, 28);
             this.label9.Margin = new System.Windows.Forms.Padding(3);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(433, 13);
+            this.label9.Size = new System.Drawing.Size(214, 13);
             this.label9.TabIndex = 1;
-            this.label9.Text = "InternetGatewayDevice.Services.VoiceService.1.VoiceProfile.1.Line.1.SIP.AuthUserN" +
-    "ame";
+            this.label9.Text = "Authentication Username (including domain)";
             // 
             // label10
             // 
@@ -470,10 +464,9 @@
             this.label10.Location = new System.Drawing.Point(3, 53);
             this.label10.Margin = new System.Windows.Forms.Padding(3);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(429, 13);
+            this.label10.Size = new System.Drawing.Size(53, 13);
             this.label10.TabIndex = 2;
-            this.label10.Text = "InternetGatewayDevice.Services.VoiceService.1.VoiceProfile.1.Line.1.SIP.AuthPassw" +
-    "ord";
+            this.label10.Text = "Password";
             // 
             // txtLine1RegUserName
             // 
