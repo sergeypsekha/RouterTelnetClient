@@ -64,6 +64,10 @@
             this.txtLine1RegUserName = new System.Windows.Forms.TextBox();
             this.txtLine1AuthUserName = new System.Windows.Forms.TextBox();
             this.txtLine1AuthPassword = new System.Windows.Forms.TextBox();
+            this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label14 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -73,6 +77,9 @@
             this.tableVoiceProfile.SuspendLayout();
             this.gbLine1.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
+            this.tableLayoutPanel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -119,16 +126,18 @@
             // 
             this.tableLayoutPanel3.ColumnCount = 1;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Controls.Add(this.gbLine2, 0, 2);
-            this.tableLayoutPanel3.Controls.Add(this.gbVoiceProfile, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.gbLine1, 0, 1);
+            this.tableLayoutPanel3.Controls.Add(this.gbLine2, 0, 3);
+            this.tableLayoutPanel3.Controls.Add(this.gbVoiceProfile, 0, 1);
+            this.tableLayoutPanel3.Controls.Add(this.gbLine1, 0, 2);
+            this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel6, 0, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 3;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 42.85715F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 28.57143F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 28.57143F));
+            this.tableLayoutPanel3.RowCount = 4;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 75F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(778, 521);
             this.tableLayoutPanel3.TabIndex = 1;
             // 
@@ -136,9 +145,9 @@
             // 
             this.gbLine2.Controls.Add(this.tableLayoutPanel5);
             this.gbLine2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gbLine2.Location = new System.Drawing.Point(3, 374);
+            this.gbLine2.Location = new System.Drawing.Point(3, 408);
             this.gbLine2.Name = "gbLine2";
-            this.gbLine2.Size = new System.Drawing.Size(772, 144);
+            this.gbLine2.Size = new System.Drawing.Size(772, 110);
             this.gbLine2.TabIndex = 2;
             this.gbLine2.TabStop = false;
             this.gbLine2.Text = "Line 2";
@@ -162,7 +171,7 @@
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(766, 125);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(766, 91);
             this.tableLayoutPanel5.TabIndex = 0;
             // 
             // label11
@@ -226,9 +235,9 @@
             // 
             this.gbVoiceProfile.Controls.Add(this.tableVoiceProfile);
             this.gbVoiceProfile.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gbVoiceProfile.Location = new System.Drawing.Point(3, 3);
+            this.gbVoiceProfile.Location = new System.Drawing.Point(3, 78);
             this.gbVoiceProfile.Name = "gbVoiceProfile";
-            this.gbVoiceProfile.Size = new System.Drawing.Size(772, 217);
+            this.gbVoiceProfile.Size = new System.Drawing.Size(772, 208);
             this.gbVoiceProfile.TabIndex = 0;
             this.gbVoiceProfile.TabStop = false;
             this.gbVoiceProfile.Text = "Voice profile";
@@ -264,7 +273,7 @@
             this.tableVoiceProfile.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableVoiceProfile.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableVoiceProfile.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableVoiceProfile.Size = new System.Drawing.Size(766, 198);
+            this.tableVoiceProfile.Size = new System.Drawing.Size(766, 189);
             this.tableVoiceProfile.TabIndex = 0;
             // 
             // label1
@@ -409,9 +418,9 @@
             // 
             this.gbLine1.Controls.Add(this.tableLayoutPanel4);
             this.gbLine1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gbLine1.Location = new System.Drawing.Point(3, 226);
+            this.gbLine1.Location = new System.Drawing.Point(3, 292);
             this.gbLine1.Name = "gbLine1";
-            this.gbLine1.Size = new System.Drawing.Size(772, 142);
+            this.gbLine1.Size = new System.Drawing.Size(772, 110);
             this.gbLine1.TabIndex = 1;
             this.gbLine1.TabStop = false;
             this.gbLine1.Text = "Line 1";
@@ -435,7 +444,7 @@
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(766, 123);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(766, 91);
             this.tableLayoutPanel4.TabIndex = 0;
             // 
             // label8
@@ -495,6 +504,51 @@
             this.txtLine1AuthPassword.Size = new System.Drawing.Size(224, 20);
             this.txtLine1AuthPassword.TabIndex = 5;
             // 
+            // tableLayoutPanel6
+            // 
+            this.tableLayoutPanel6.ColumnCount = 2;
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel6.Controls.Add(this.pictureBox1, 0, 0);
+            this.tableLayoutPanel6.Controls.Add(this.panel1, 1, 0);
+            this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel6.Name = "tableLayoutPanel6";
+            this.tableLayoutPanel6.RowCount = 1;
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(772, 69);
+            this.tableLayoutPanel6.TabIndex = 3;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pictureBox1.Image = global::RouterTelnetClient.Resource1.calix;
+            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(149, 63);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.label14);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(158, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(611, 63);
+            this.panel1.TabIndex = 1;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F);
+            this.label14.Location = new System.Drawing.Point(18, 15);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(573, 36);
+            this.label14.TabIndex = 0;
+            this.label14.Text = "Calix ONT T-Series VoIP provisioning tool";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -518,6 +572,10 @@
             this.gbLine1.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
+            this.tableLayoutPanel6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -560,6 +618,10 @@
         private System.Windows.Forms.TextBox txtLine2RegUserName;
         private System.Windows.Forms.TextBox txtLine2AuthUserName;
         private System.Windows.Forms.TextBox txtLine2AuthPassword;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label14;
 
     }
 }

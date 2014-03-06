@@ -63,6 +63,16 @@ namespace RouterTelnetClient {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap calix {
+            get {
+                object obj = ResourceManager.GetObject("calix", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap sending_data {
             get {
                 object obj = ResourceManager.GetObject("sending_data", resourceCulture);
