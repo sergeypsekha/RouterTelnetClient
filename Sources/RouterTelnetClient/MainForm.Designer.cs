@@ -367,7 +367,6 @@
             this.txtDigitMap.Name = "txtDigitMap";
             this.txtDigitMap.Size = new System.Drawing.Size(224, 20);
             this.txtDigitMap.TabIndex = 8;
-            this.txtDigitMap.Text = " 1xx|[2-8]xxxxxx|0xxxxxxxx|07xxxxxxxxx|00x.s";
             // 
             // txtUserAgentDomain
             // 

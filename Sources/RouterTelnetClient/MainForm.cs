@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
 using RouterTelnetClient.Business;
+using RouterTelnetClient.Configuration;
 using RouterTelnetClient.Forms;
 using RouterTelnetClient.Models;
 using RouterTelnetClient.Services;
@@ -16,16 +18,41 @@ namespace RouterTelnetClient
 
         private IValidationService validationService = null;
 
+        private UserProfileConfiguration configuration = null;
+
         public MainForm()
         {
             this.InitializeComponent();
             this.Initialize();
         }
-        
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            this.InitializeVoiceProfileView();
+            this.InitializeLines();
+        }
+
+        private void InitializeLines()
+        {
+        }
+
+        private void InitializeVoiceProfileView()
+        {
+            this.cbDigitMapEnable.Checked = this.configuration.DigitMapEnable;
+            this.txtDigitMap.Text = this.configuration.DigitMap;
+            this.txtUserAgentDomain.Text = this.configuration.UserAgentDomain;
+            this.txtProxyServer.Text = this.configuration.ProxyServer;
+            this.txtRegistrarServer.Text = this.configuration.RegistrarServer;
+            this.txtOutboundProxy.Text = this.configuration.OutboundProxy;
+            this.txtRegistrationPeriod.Text = this.configuration.RegistrationPeriod.ToString(CultureInfo.InvariantCulture);
+        }
+
         private void Initialize()
         {
             this.validationService = new ValidationService();
             this.telnetService = new TelnetService();
+            this.configuration = new UserServiceConfiguration().UserProfileConfiguration;
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)

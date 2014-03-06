@@ -35,7 +35,7 @@ namespace RouterTelnetClient.Configuration
             }
         }
 
-        [ConfigurationProperty(Key.DigitMap, DefaultValue = " 1xx|[2-8]xxxxxx|0xxxxxxxx|07xxxxxxxxx|00x.s",
+        [ConfigurationProperty(Key.DigitMap, DefaultValue = "1xx|[2-8]xxxxxx|0xxxxxxxx|07xxxxxxxxx|00x.s",
             IsRequired = true)]
         public string DigitMap
         {
@@ -101,7 +101,7 @@ namespace RouterTelnetClient.Configuration
             }
         }
 
-        [ConfigurationProperty(Key.RegistrationPeriod, DefaultValue = "3500", IsRequired = true)]
+        [ConfigurationProperty(Key.RegistrationPeriod, DefaultValue = "3600", IsRequired = true)]
         public int RegistrationPeriod
         {
             get
