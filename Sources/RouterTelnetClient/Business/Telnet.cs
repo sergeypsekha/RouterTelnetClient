@@ -129,6 +129,7 @@ namespace RouterTelnetClient.Business
         {
             this.WriteMessage("/t/v");
             this.WriteMessage("show ua reg 0");
+            this.WriteLog();
         }
 
         private void WriteDigitMapEnabled(VoiceProfileViewModel model)
