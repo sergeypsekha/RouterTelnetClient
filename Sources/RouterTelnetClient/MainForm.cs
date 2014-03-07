@@ -126,6 +126,10 @@ namespace RouterTelnetClient
 
             var voiceProfileModel = new VoiceProfileViewModel
                                         {
+                                            IpAddress = this.txtIpAddress.Text,
+                                            UserName = this.txtUserName.Text,
+                                            Password = this.txtPassword.Text,
+                                            PingEnabled = this.appSettings.PingEnabled,
                                             DigitMapEnable = this.cbDigitMapEnable.Checked,
                                             DigitMap = this.txtDigitMap.Text,
                                             UserAgentDomain = this.txtUserAgentDomain.Text,

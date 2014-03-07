@@ -13,6 +13,14 @@ namespace RouterTelnetClient.Models
             this.Lines = new List<LineViewModel>();
         }
 
+        public string IpAddress { get; set; }
+
+        public string UserName { get; set; }
+
+        public string Password { get; set; }
+
+        public bool PingEnabled { get; set; }
+
         public bool DigitMapEnable { get; set; }
 
         public string DigitMap { get; set; }

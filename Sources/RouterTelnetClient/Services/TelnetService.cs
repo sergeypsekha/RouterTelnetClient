@@ -1,4 +1,6 @@
-﻿using RouterTelnetClient.Business;
+﻿using System.Windows.Forms;
+
+using RouterTelnetClient.Business;
 using RouterTelnetClient.Models;
 
 namespace RouterTelnetClient.Services
@@ -18,6 +20,9 @@ namespace RouterTelnetClient.Services
 
         public void Submit(VoiceProfileViewModel viewModel)
         {
+            this.InitializeKeepAliveService(viewModel);
+            this.InitializeTerminalClient(viewModel);
+
             this.pingService.Send();
             this.telnet.Send(viewModel);
         }
@@ -25,13 +30,16 @@ namespace RouterTelnetClient.Services
         private void Initialize()
         {
             this.InitializeApplicationSettings();
-            this.InitializeKeepAliveService();
-            this.InitializeTerminalClient();
         }
 
-        private void InitializeKeepAliveService()
+        private void InitializeKeepAliveService(VoiceProfileViewModel viewModel)
         {
-            this.pingService = new PingService(this.appSettings);
+            var settings = new FormAppSettings
+                               {
+                                   Host = viewModel.IpAddress,
+                                   PingEnabled = viewModel.PingEnabled,
+                               };
+            this.pingService = new PingService(settings);
         }
 
         private void InitializeApplicationSettings()
@@ -39,9 +47,20 @@ namespace RouterTelnetClient.Services
             this.appSettings = new AppSettings();
         }
 
-        private void InitializeTerminalClient()
+        private void InitializeTerminalClient(VoiceProfileViewModel viewModel)
         {
-            this.telnet = new Telnet(this.appSettings);
+            var settings = new FormAppSettings
+                               {
+                                   Host = viewModel.IpAddress,
+                                   UserName = viewModel.UserName,
+                                   Password = viewModel.Password,
+                                   Port = this.appSettings.Port,
+                                   TimeoutSeconds = this.appSettings.TimeoutSeconds,
+                                   VirtualScreenHeight = this.appSettings.VirtualScreenHeight,
+                                   VirtualScreenWidth = this.appSettings.VirtualScreenWidth
+                               };
+
+            this.telnet = new Telnet(settings);
         }
     }
 }

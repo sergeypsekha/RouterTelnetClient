@@ -72,6 +72,7 @@
     </Compile>
     <Compile Include="Services\AppSettings.cs" />
     <Compile Include="Business\AppSettingsKey.cs" />
+    <Compile Include="Services\FormAppSettings.cs" />
     <Compile Include="Services\IAppSettings.cs" />
     <Compile Include="Services\IPingService.cs" />
     <Compile Include="Services\ITelnetService.cs" />
