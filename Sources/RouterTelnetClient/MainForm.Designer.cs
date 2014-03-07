@@ -569,7 +569,6 @@
             this.groupBox1.Size = new System.Drawing.Size(772, 94);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
             // 
             // tableLayoutPanel7
             // 
@@ -649,6 +648,7 @@
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(224, 20);
             this.txtPassword.TabIndex = 5;
+            this.txtPassword.UseSystemPasswordChar = true;
             // 
             // MainForm
             // 

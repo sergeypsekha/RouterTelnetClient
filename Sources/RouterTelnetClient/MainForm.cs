@@ -20,6 +20,8 @@ namespace RouterTelnetClient
 
         private UserProfileConfiguration configuration = null;
 
+        private IAppSettings appSettings;
+
         public MainForm()
         {
             this.InitializeComponent();
@@ -29,8 +31,16 @@ namespace RouterTelnetClient
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
+            this.InitializeLoginView();
             this.InitializeVoiceProfileView();
             this.InitializeLines();
+        }
+
+        private void InitializeLoginView()
+        {
+            this.txtIpAddress.Text = this.appSettings.Host;
+            this.txtUserName.Text = this.appSettings.UserName;
+            this.txtPassword.Text = this.appSettings.Password;
         }
 
         private void InitializeLines()
@@ -71,6 +81,7 @@ namespace RouterTelnetClient
             this.validationService = new ValidationService();
             this.telnetService = new TelnetService();
             this.configuration = new UserServiceConfiguration().UserProfileConfiguration;
+            this.appSettings = new AppSettings();
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
