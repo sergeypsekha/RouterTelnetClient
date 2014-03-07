@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 
@@ -16,6 +17,17 @@ namespace RouterTelnetClient.Configuration
             this.RegistrarServer = configuration.RegistrarServer;
             this.OutboundProxy = configuration.OutboundProxy;
             this.RegistrationPeriod = configuration.RegistrationPeriod;
+            this.Lines = new List<LineConfiguration>();
+            foreach (var lineConfigurationElement in configuration.Lines)
+            {
+                var lineConfiguration = new LineConfiguration
+                                            {
+                                                RegUserName = lineConfigurationElement.RegUserName,
+                                                AuthUserName = lineConfigurationElement.AuthUserName,
+                                                AuthPassword = lineConfigurationElement.AuthPassword
+                                            };
+                this.Lines.Add(lineConfiguration);
+            }
         }
 
         public bool DigitMapEnable { get; set; }
@@ -31,5 +43,16 @@ namespace RouterTelnetClient.Configuration
         public string OutboundProxy { get; set; }
 
         public int RegistrationPeriod { get; set; }
+
+        public List<LineConfiguration> Lines { get; set; }
+    }
+
+    public class LineConfiguration
+    {
+        public string RegUserName { get; set; }
+
+        public string AuthUserName { get; set; }
+
+        public string AuthPassword { get; set; }
     }
 }

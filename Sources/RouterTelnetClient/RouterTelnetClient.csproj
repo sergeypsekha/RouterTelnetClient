@@ -54,6 +54,7 @@
     <Compile Include="ApplicationWrapper.cs" />
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Configuration\GenericConfigurationElementCollection.cs" />
+    <Compile Include="Configuration\LineConfigurationElement.cs" />
     <Compile Include="Configuration\UserProfileConfiguration.cs" />
     <Compile Include="Configuration\UserServiceConfiguration.cs" />
     <Compile Include="Configuration\VoiceProfileConfigurationElement.cs" />

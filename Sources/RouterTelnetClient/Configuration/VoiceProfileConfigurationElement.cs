@@ -19,6 +19,8 @@ namespace RouterTelnetClient.Configuration
             internal const string OutboundProxy = "OutboundProxy";
 
             internal const string RegistrationPeriod = "RegistrationPeriod";
+
+            internal const string Lines = "Lines";
         }
 
 
@@ -111,6 +113,17 @@ namespace RouterTelnetClient.Configuration
             set
             {
                 this[Key.RegistrationPeriod] = value;
+            }
+        }
+
+        [ConfigurationProperty(Key.Lines, IsRequired = true)]
+        [ConfigurationCollection(typeof(LineConfigurationElement), AddItemName = "add", ClearItemsName = "clear",
+            RemoveItemName = "remove")]
+        public GenericConfigurationElementCollection<LineConfigurationElement> Lines
+        {
+            get
+            {
+                return (GenericConfigurationElementCollection<LineConfigurationElement>)this[Key.Lines];
             }
         }
     }
