@@ -42,6 +42,7 @@ namespace RouterTelnetClient.Business
 
                 this.SendVoiceProfileModel(model);
                 this.SendVoiceProfileModelLines(model);
+                this.SendShowConfigurationStatus(model);
             }
         }
 
@@ -122,6 +123,12 @@ namespace RouterTelnetClient.Business
             this.WriteOutboundProxy(model);
             this.WriteRegistrationPeriod(model);
             this.WriteLog();
+        }
+
+        private void SendShowConfigurationStatus(VoiceProfileViewModel model)
+        {
+            this.WriteMessage("/t/v");
+            this.WriteMessage("show ua reg 0");
         }
 
         private void WriteDigitMapEnabled(VoiceProfileViewModel model)
