@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 
@@ -28,6 +29,16 @@ namespace RouterTelnetClient.Configuration
                                             };
                 this.Lines.Add(lineConfiguration);
             }
+            if (this.Lines.Count >= 2)
+            {
+                return;
+            }
+
+            var message =
+                string.Format(
+                    "At least two lines have to be specified in the VoiceService/VoiceProfile/Lines configuration section.\n\tBut '{0}' was specified",
+                    this.Lines.Count);
+            throw new ConfigurationErrorsException(message);
         }
 
         public bool DigitMapEnable { get; set; }

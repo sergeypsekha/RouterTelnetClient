@@ -35,6 +35,24 @@ namespace RouterTelnetClient
 
         private void InitializeLines()
         {
+            this.InitializeLineOne();
+            this.InitializeLineTwo();
+        }
+
+        private void InitializeLineOne()
+        {
+            var line = this.configuration.Lines[0];
+            this.txtLine1RegUserName.Text = line.RegUserName;
+            this.txtLine1AuthUserName.Text = line.AuthUserName;
+            this.txtLine1AuthPassword.Text = line.AuthPassword;
+        }
+
+        private void InitializeLineTwo()
+        {
+            var line = this.configuration.Lines[1];
+            this.txtLine2RegUserName.Text = line.RegUserName;
+            this.txtLine2AuthUserName.Text = line.AuthUserName;
+            this.txtLine2AuthPassword.Text = line.AuthPassword;
         }
 
         private void InitializeVoiceProfileView()
