@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using RouterTelnetClient.Business;
 using RouterTelnetClient.Configuration;
@@ -21,6 +22,8 @@ namespace RouterTelnetClient
         private UserProfileConfiguration configuration = null;
 
         private IAppSettings appSettings;
+
+        private SynchronizationContext context;
 
         public MainForm()
         {
@@ -82,6 +85,7 @@ namespace RouterTelnetClient
             this.telnetService = new TelnetService();
             this.configuration = new UserServiceConfiguration().UserProfileConfiguration;
             this.appSettings = new AppSettings();
+            this.context = SynchronizationContext.Current ?? new SynchronizationContext();
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -101,21 +105,36 @@ namespace RouterTelnetClient
                 return;
             }
 
-            var longOperationForm = new LongOperationForm();
-            longOperationForm.Show(this);
+            var progressCallback = new ProgressWindowForm("New txt") { StartPosition = FormStartPosition.CenterParent };
+                ;
 
-            var x = longOperationForm.Owner.Location.X + (longOperationForm.Owner.Width - longOperationForm.Width) / 2;
-            var y = longOperationForm.Owner.Location.Y + (longOperationForm.Owner.Height - longOperationForm.Height) / 2;
-            longOperationForm.Location = new System.Drawing.Point(x, y);
-            longOperationForm.SetDesktopLocation(x, y);
-            try
-            {
-                this.telnetService.Submit(model);
-            }
-            finally
-            {
-                longOperationForm.Hide();
-            }
+            Task.Factory.StartNew(() => this.context.Send(state => progressCallback.ShowDialog(this), null));
+            Task.Factory.StartNew(() => this.telnetService.Submit(model, progressCallback as IProgressCallback))
+                .ContinueWith(this.ShowError, TaskContinuationOptions.OnlyOnFaulted)
+                .ContinueWith(task => progressCallback.End());
+        }
+
+        private void ShowError(Task task)
+        {
+            this.context.Send(
+                state =>
+                    {
+                        if (task.Exception == null)
+                        {
+                            return;
+                        }
+
+                        var message = task.Exception.InnerException == null
+                                          ? task.Exception.Message
+                                          : task.Exception.InnerException.Message;
+                        var errorForm = new ErrorForm(message)
+                                            {
+                                                StartPosition =
+                                                    FormStartPosition.CenterParent,
+                                            };
+                        errorForm.ShowDialog(this);
+                    },
+                null);
         }
 
         private VoiceProfileViewModel GetViewProfileModel()

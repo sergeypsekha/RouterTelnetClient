@@ -3,6 +3,7 @@ using System.Reflection;
 
 using NLog;
 
+using RouterTelnetClient.Forms;
 using RouterTelnetClient.Models;
 using RouterTelnetClient.Services;
 using RouterTelnetClient.TelnetClient;
@@ -15,11 +16,16 @@ namespace RouterTelnetClient.Business
 
         private readonly IAppSettings appSettings;
 
+        private readonly IProgressCallback progressCallback;
+
         private Terminal terminal;
 
-        public Telnet(IAppSettings appSettings)
+        private int progressStep = 0;
+
+        public Telnet(IAppSettings appSettings, IProgressCallback progressCallback)
         {
             this.appSettings = appSettings;
+            this.progressCallback = progressCallback;
         }
 
         public void Disconnect()
@@ -29,6 +35,7 @@ namespace RouterTelnetClient.Business
 
         public void Send(VoiceProfileViewModel model)
         {
+            this.progressCallback.SetRange(0, 24);
             using (this.terminal = new Terminal(
                     this.appSettings.Host,
                     this.appSettings.Port,
@@ -77,6 +84,8 @@ namespace RouterTelnetClient.Business
 
         private bool Connect()
         {
+            this.progressCallback.SetText(
+                string.Format("Connecting to '{0}:{1}'", this.appSettings.Host, this.appSettings.Port));
             if (this.terminal.Connect())
             {
                 // this.WriteLog();
@@ -268,11 +277,14 @@ namespace RouterTelnetClient.Business
 
         private void WriteMessage(string message)
         {
+            this.progressCallback.SetText(message);
             this.terminal.SendResponse(message, endLine: true);
             if (!this.terminal.WaitForChangedScreen())
             {
                 throw new InvalidOperationException("Can't send message: " + message);
             }
+
+            this.progressCallback.StepTo(++this.progressStep);
         }
 
         private void WriteLog()

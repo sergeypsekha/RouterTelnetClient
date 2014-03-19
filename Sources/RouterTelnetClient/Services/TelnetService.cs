@@ -1,6 +1,9 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Net.NetworkInformation;
+using System.Windows.Forms;
 
 using RouterTelnetClient.Business;
+using RouterTelnetClient.Forms;
 using RouterTelnetClient.Models;
 
 namespace RouterTelnetClient.Services
@@ -13,13 +16,17 @@ namespace RouterTelnetClient.Services
 
         private ITelnet telnet = null;
 
+        private IProgressCallback progressCallback;
+
         public TelnetService()
         {
             this.Initialize();
         }
 
-        public void Submit(VoiceProfileViewModel viewModel)
+        public void Submit(VoiceProfileViewModel viewModel, IProgressCallback progressCallback)
         {
+            this.progressCallback = progressCallback;
+            this.progressCallback.SetText("Initialize");
             this.InitializeKeepAliveService(viewModel);
             this.InitializeTerminalClient(viewModel);
 
@@ -39,7 +46,7 @@ namespace RouterTelnetClient.Services
                                    Host = viewModel.IpAddress,
                                    PingEnabled = viewModel.PingEnabled,
                                };
-            this.pingService = new PingService(settings);
+            this.pingService = new PingService(settings, this.progressCallback);
         }
 
         private void InitializeApplicationSettings()
@@ -60,7 +67,7 @@ namespace RouterTelnetClient.Services
                                    VirtualScreenWidth = this.appSettings.VirtualScreenWidth
                                };
 
-            this.telnet = new Telnet(settings);
+            this.telnet = new Telnet(settings, this.progressCallback);
         }
     }
 }

@@ -2,6 +2,7 @@
 using System.Net.NetworkInformation;
 
 using RouterTelnetClient.Business;
+using RouterTelnetClient.Forms;
 
 namespace RouterTelnetClient.Services
 {
@@ -9,9 +10,12 @@ namespace RouterTelnetClient.Services
     {
         private readonly IAppSettings appSettings;
 
-        public PingService(IAppSettings appSettings)
+        private readonly IProgressCallback progressCallback;
+
+        public PingService(IAppSettings appSettings, IProgressCallback progressCallback)
         {
             this.appSettings = appSettings;
+            this.progressCallback = progressCallback;
         }
 
         public void Send()
@@ -21,6 +25,7 @@ namespace RouterTelnetClient.Services
                 return;
             }
 
+            this.progressCallback.SetText(string.Format("Ping '{0}'", this.appSettings.Host));
             var ping = new Ping();
             var pingReply = ping.Send(this.appSettings.Host, this.appSettings.TimeoutSeconds);
             if (pingReply == null)
