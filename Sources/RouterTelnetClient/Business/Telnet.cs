@@ -289,7 +289,7 @@ namespace RouterTelnetClient.Business
 
         private void WriteLog()
         {
-            var message = this.terminal.VirtualScreen.Hardcopy().TrimEnd();
+            var message = this.terminal.VirtualScreen.Hardcopy().Trim();
             this.logger.Info(message);
             this.terminal.VirtualScreen.CleanScreen();
         }
